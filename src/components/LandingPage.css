@@ -20,6 +20,7 @@ body {
   min-height: 100vh;
   color: var(--text-primary);
   background-color: black;
+  overflow-x: hidden;
 }
 
 /* Navbar */
@@ -141,7 +142,7 @@ body {
 
 /* Main Content */
 .main-content {
-  padding: 8rem 2rem 2rem;
+  padding: 10rem 2rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;

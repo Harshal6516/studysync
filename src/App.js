@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import LandingPage from "./components/LandingPage";
 import SignIn from "./components/SignIn";
 import TaskManager from "./components/TaskManager";
+import PomodoroTimer from "./components/PomodoroTimer"; // Import Pomodoro component
+import Timetable from "./components/Timetable";
+import SubjectManager from "./components/SubjectManager";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -26,6 +29,9 @@ function App() {
           path="/tasks" 
           element={user ? <TaskManager /> : <Navigate to="/signin" replace />} 
         />
+        <Route path="/pomodoro" element={user ? <PomodoroTimer /> : <Navigate to="/signin" replace />} />
+        <Route path="/timetable" element={user ? <Timetable /> : <Navigate to="/signin" replace />} />
+        <Route path="/subject-manager" element={user ? <SubjectManager /> : <Navigate to="/signin" replace />} />
       </Routes>
     </Router>
   );

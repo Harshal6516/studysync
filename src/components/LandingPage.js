@@ -23,7 +23,7 @@ function LandingPage({ user }) {
             <button className="features-btn">Features</button>
             <div className="features-content">
               <Link to="/tasks">Task Management</Link>
-              <Link to="/pomodoro">Pomodoro Timer</Link>
+              <Link to={user ? "/pomodoro" : "/signin"}>Pomodoro Timer</Link>
               <Link to="/timetable">TimeTable</Link>
               <Link to="/subject-manager">Subject Manager</Link>
             </div>
@@ -53,7 +53,7 @@ function LandingPage({ user }) {
 
         <div className="features-showcase">
           <FeatureCard title="Task Management" description="Organize your tasks efficiently and track your progress." link="/tasks" />
-          <FeatureCard title="Pomodoro Timer" description="Stay focused with our customizable Pomodoro timer." link="/pomodoro" />
+          <FeatureCard title="Pomodoro Timer" description="Stay focused with our customizable Pomodoro timer." link={user ? "/pomodoro" : "/signin"} />
           <FeatureCard title="TimeTable" description="Make your customizable TimeTable and always be on time." link="/timetable" />
           <FeatureCard title="Subject Manager" description="Get exam ready!" link="/subject-manager" />
         </div>
