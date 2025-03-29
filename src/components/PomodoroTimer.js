@@ -49,40 +49,35 @@ const PomodoroTimer = () => {
   };
 
   return (
-    <div className="pomodoro-container">
+    <div>
 
 
-      <div className="timer-box">
-        <h1>Pomodoro Timer</h1>
-        <div className="timer-display">{formatTime(timeLeft)}</div>
-        <progress className="progress-bar" value={timeLeft} max={pomodoroTime * 60}></progress>
-        <div className="controls">
-          <button onClick={startTimer}>Start</button>
-          <button onClick={pauseTimer}>Pause</button>
-          <button onClick={resetTimer}>Reset</button>
-          <button onClick={openSettings}>⚙️</button>
-        </div>
-        <div className="mode-switch">
-          <label>
-
-          </label>
-          <label>
-          </label>
-        </div>
-      </div>
-
-      {showSettings && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={closeSettings}>&times;</span>
-            <h2>Settings</h2>
-            <label>Pomodoro Duration (minutes): <input type="number" value={pomodoroTime} onChange={(e) => setPomodoroTime(parseInt(e.target.value))} /></label>
-            <label>Short Break (minutes): <input type="number" value={shortBreak} onChange={(e) => setShortBreak(parseInt(e.target.value))} /></label>
-            <label>Long Break (minutes): <input type="number" value={longBreak} onChange={(e) => setLongBreak(parseInt(e.target.value))} /></label>
-            <button onClick={saveSettings}>Save</button>
+      <div className="pomodoro-container">
+        <div className="timer-box">
+          <h1>Pomodoro Timer</h1>
+          <div className="timer-display">{formatTime(timeLeft)}</div>
+          <progress className="progress-bar" value={timeLeft} max={pomodoroTime * 60}></progress>
+          <div className="controls">
+            <button onClick={startTimer}>Start</button>
+            <button onClick={pauseTimer}>Pause</button>
+            <button onClick={resetTimer}>Reset</button>
+            <button onClick={openSettings}>⚙️</button>
           </div>
         </div>
-      )}
+
+        {showSettings && (
+          <div className="modal">
+            <div className="modal-content">
+              <span className="close" onClick={closeSettings}>&times;</span>
+              <h2>Settings</h2>
+              <label>Pomodoro Duration (minutes): <input type="number" value={pomodoroTime} onChange={(e) => setPomodoroTime(parseInt(e.target.value))} /></label>
+              <label>Short Break (minutes): <input type="number" value={shortBreak} onChange={(e) => setShortBreak(parseInt(e.target.value))} /></label>
+              <label>Long Break (minutes): <input type="number" value={longBreak} onChange={(e) => setLongBreak(parseInt(e.target.value))} /></label>
+              <button onClick={saveSettings}>Save</button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

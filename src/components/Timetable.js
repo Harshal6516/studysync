@@ -31,6 +31,29 @@ const Timetable = () => {
     setSchedule(newSchedule);
   };
 
+  const addRow = () => {
+    const newTimeSlots = [...timeSlots, ""]; // Add empty slot
+    setTimeSlots(newTimeSlots);
+  };
+
+  const deleteRow = (index) => {
+    if (timeSlots.length > 1) {
+      const newTimeSlots = timeSlots.filter((_, i) => i !== index);
+      const newSchedule = Object.keys(schedule).reduce((acc, key) => {
+        const [day, time] = key.split("-");
+        if (parseInt(time) !== index) {
+          acc[key] = schedule[key];
+        }
+        return acc;
+      }, {});
+
+      setTimeSlots(newTimeSlots);
+      setSchedule(newSchedule);
+    } else {
+      alert("At least one row must be present.");
+    }
+  };
+
   const saveSchedule = () => {
     alert("Schedule Saved!");
   };
@@ -39,10 +62,6 @@ const Timetable = () => {
     setSchedule({});
     localStorage.removeItem("studySchedule");
     alert("Schedule Cleared!");
-  };
-
-  const resetTable = () => {
-    setSchedule({});
   };
 
   return (
@@ -55,6 +74,7 @@ const Timetable = () => {
             {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map(day => (
               <th key={day}>{day}</th>
             ))}
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -76,6 +96,9 @@ const Timetable = () => {
                   />
                 </td>
               ))}
+              <td>
+                <button className="delete-btn" onClick={() => deleteRow(timeIndex)}>❌</button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -83,7 +106,7 @@ const Timetable = () => {
       <div className="buttons">
         <button className="ttbuttons" onClick={saveSchedule}>Save Schedule</button>
         <button className="ttbuttons" onClick={clearSchedule}>Clear Schedule</button>
-        <button className="ttbuttons" onClick={resetTable}>Reset</button>
+        <button className="ttbuttons" onClick={addRow}>Add Row</button>
       </div>
     </div>
   );
