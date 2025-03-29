@@ -59,6 +59,9 @@ const TaskManager = () => {
     return true;
   });
 
+  
+
+
   const completedTasks = tasks.filter((task) => task.completed).length;
   const taskCompletionPercentage =
     tasks.length > 0 ? (completedTasks / tasks.length) * 100 : 0;
@@ -88,7 +91,7 @@ const TaskManager = () => {
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
             required
-          />
+            />
           <select
             value={priority}
             onChange={(e) => setPriority(e.target.value)}
@@ -141,14 +144,15 @@ const TaskManager = () => {
 
       <div className="progress-container">
         <h2>Study Progress</h2>
-        <div className="progress-bar">
-          <div
-            className="progress-fill"
-            style={{ width: `${taskCompletionPercentage}%` }}
-          >
-            {Math.round(taskCompletionPercentage)}%
-          </div>
-        </div>
+        <div className="progress">
+  <div
+    className={`progress-bar ${taskCompletionPercentage < 40 ? 'low' : taskCompletionPercentage < 70 ? 'medium' : 'high'}`}
+    style={{ width: `${taskCompletionPercentage}%` }}
+  >
+    {Math.round(taskCompletionPercentage)}%
+  </div>
+</div>
+
       </div>
     </div>
   );

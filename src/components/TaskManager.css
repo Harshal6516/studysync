@@ -83,7 +83,7 @@ body {
 input, select, textarea {
     width: 100%;
     padding: 10px;
-    margin-top: 5px;
+    margin-top: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background: var(--background);
@@ -98,6 +98,7 @@ button {
     cursor: pointer;
     border-radius: 4px;
     transition: all 0.3s;
+    margin: 5px;
 }
 
 button:hover {
@@ -107,22 +108,45 @@ button:hover {
 
 /* Progress Bar */
 .progress {
-    background: #e0e0e0;
-    border-radius: 4px;
-    height: 20px;
+    background: #2c2c2c;
+    border-radius: 20px;
+    height: 25px;
+    width: 100%;
     overflow: hidden;
+    margin-top: 10px;
+    position: relative;
 }
 
 .progress-bar {
     height: 100%;
-    text-align: center;
-    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: bold;
     color: white;
-    background: var(--secondary);
+    transition: width 0.4s ease-in-out;
+    margin-top: 7px;
+    border-radius: 20px;
+   
 }
 
-/* Task Container */
-.container {
-    margin-top: 100px;
+.progress-bar.low {
+    background: linear-gradient(to right, red); 
 }
+
+.progress-bar.medium {
+    background: linear-gradient(to right, red); 
+}
+
+.progress-bar.high {
+    background: linear-gradient(to right, red); 
+}
+
+
+/* Task Container */
+.progress-container {
+    margin-top: 40px;
+    text-align: center;
+}
+
+  
